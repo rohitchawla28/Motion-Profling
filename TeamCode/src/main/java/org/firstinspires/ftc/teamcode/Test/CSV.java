@@ -7,8 +7,9 @@ import java.io.PrintWriter;
 import java.nio.file.FileSystems;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.ArrayList;
 
-public class Data {
+public class CSV {
 
     public String getDirectory() {
         return new File("").getAbsolutePath();
@@ -16,6 +17,8 @@ public class Data {
 
     public void createCSV(String name) throws IOException {
         PrintWriter writer = new PrintWriter(getDirectory());
-        writ
+
     }
+
+
 }
