@@ -1,7 +1,6 @@
 package org.firstinspires.ftc.teamcode.PathGeneration;
 
 public class Spline {
-
     double sVel;
     double eVel;
     double sAccel;
