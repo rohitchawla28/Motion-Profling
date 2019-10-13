@@ -37,10 +37,13 @@ public class Drivetrain {
     }
 
     // ==================================  UTILITY  =============================================
-    public void setPower(double power) {
-        fl.setPower(power);
+    public void setLeftPower(double power) {
         fr.setPower(power);
-        bl.setPower(power);
+        br.setPower(power);
+    }
+
+    public void setRightPower(double power) {
+        fr.setPower(power);
         br.setPower(power);
     }
 

@@ -37,8 +37,7 @@ public class Spline {
         ArrayList<Double> xC = new ArrayList<>();
         ArrayList<Double> yC = new ArrayList<>();
 
-
-        xFunction.setStart( new Point(0.0, start.getX(), start.getTheta()));
+        xFunction.setStart(new Point(0.0, start.getX(), start.getTheta()));
         xFunction.setEnd(new Point(1.0, end.getX(), end.getTheta()));
         yFunction.setStart(new Point(0.0, start.getY(), start.getTheta()));
         yFunction.setEnd(new Point(1.0, end.getY(), end.getTheta()));
@@ -60,8 +59,11 @@ public class Spline {
 
     public String toString() {
         return "(" + xFunction.toString() + ", " + yFunction.toString() + ")" + "\n" + start + "\n" + end;
-
     }
+<<<<<<< HEAD
+=======
+
+>>>>>>> 4aff0cb838c38d5c097596e7249786216d504cd0
 
     public Point solveAt(double t) {
         return new Point(xFunction.solve(t) , yFunction.solve(t), 0);
