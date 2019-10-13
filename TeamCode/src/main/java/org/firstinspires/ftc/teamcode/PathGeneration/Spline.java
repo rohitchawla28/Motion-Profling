@@ -60,10 +60,9 @@ public class Spline {
     public String toString() {
         return "(" + xFunction.toString() + ", " + yFunction.toString() + ")" + "\n" + start + "\n" + end;
     }
-<<<<<<< HEAD
-=======
 
->>>>>>> 4aff0cb838c38d5c097596e7249786216d504cd0
+
+
 
     public Point solveAt(double t) {
         return new Point(xFunction.solve(t) , yFunction.solve(t), 0);
