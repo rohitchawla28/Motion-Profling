@@ -4,10 +4,10 @@ import java.util.ArrayList;
 
 public class Polynomial {
 
-    Point start;
-    Point end;
+    private Point start;
+    private Point end;
 
-    ArrayList<Double> coefficients;
+    private ArrayList<Double> coefficients;
 
     public Polynomial() {
         start = new Point();
@@ -46,7 +46,6 @@ public class Polynomial {
     }
 
     public double solve(Double t) {
-
         double solution = 0.0;
 
         for (int i = 0; i < coefficients.size(); i++) {
@@ -58,15 +57,17 @@ public class Polynomial {
     }
 
     public String toString() {
-
         String t = "";
 
         for (int i = 0; i < coefficients.size(); i++) {
-            if (i == coefficients.size() - 1)
+            if (i == coefficients.size() - 1) {
                 t += coefficients.get(i) + "t^" + i;
-            else
+            }
+            else {
                 t += coefficients.get(i) + "t^" + i + " + ";
+            }
         }
+
         return t; //+ "{" + Math.min(start.getX(), end.getX()) + "<x<" + Math.max(start.getX(), end.getX()) + "}";
     }
 }

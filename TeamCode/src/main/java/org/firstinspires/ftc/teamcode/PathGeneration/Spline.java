@@ -4,7 +4,6 @@ import java.util.ArrayList;
 
 public class Spline {
 
-
     private Polynomial xFunction;
     private Polynomial yFunction;
 
@@ -38,8 +37,7 @@ public class Spline {
         ArrayList<Double> xC = new ArrayList<>();
         ArrayList<Double> yC = new ArrayList<>();
 
-
-        xFunction.setStart( new Point(0.0, start.getX(), start.getTheta()));
+        xFunction.setStart(new Point(0.0, start.getX(), start.getTheta()));
         xFunction.setEnd(new Point(1.0, end.getX(), end.getTheta()));
         yFunction.setStart(new Point(0.0, start.getY(), start.getTheta()));
         yFunction.setEnd(new Point(1.0, end.getY(), end.getTheta()));
@@ -61,7 +59,6 @@ public class Spline {
 
     public String toString() {
         return "(" + xFunction.toString() + ", " + yFunction.toString() + ")" + "\n" + start + "\n" + end;
-
     }
 
 

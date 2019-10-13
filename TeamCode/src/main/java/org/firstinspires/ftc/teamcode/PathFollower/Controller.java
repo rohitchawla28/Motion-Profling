@@ -13,14 +13,13 @@ public class Controller {
     private double kV;
     private double kA;
 
-    public double pdvaOutput(Point currPoint, Point nextPoint, double dt, double prevError, double curr_V, double goal_v, double goal_a) {
-        double s_error = MathFunctions.distance(currPoint, nextPoint);
-        double v_error = goal_v - curr_V;
+    public double PDVA(Point currPoint, Point nextPoint, double dt, double prevSError, double goalVel, double goalAcc) {
+        double sError = MathFunctions.distance(currPoint, nextPoint);
 
-        double p = s_error * kP;
-        double d = ((s_error - prevError) / (dt - goal_v)) * kD;
-        double v = goal_v * kV;
-        double a = goal_a * kA;
+        double p = sError * kP;
+        double d = ((sError - prevSError) / (dt - goalVel)) * kD;
+        double v = goalVel * kV;
+        double a = goalAcc * kA;
 
         return p + d + v + a;
     }

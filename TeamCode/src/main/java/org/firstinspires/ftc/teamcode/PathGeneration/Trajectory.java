@@ -11,70 +11,57 @@ public class Trajectory {
     // store left/right velocities after modifying
     // store left/right accelerations after modifying
 
-    ArrayList<Point> originalPath;
+    ArrayList<Point> origPath;
     ArrayList<Point> injectedPath;
     ArrayList<Spline> path;
-    ArrayList<Double> velocity;
-    ArrayList<Double> accel;
+    ArrayList<Double> vel;
+    ArrayList<Double> acc;
 
     ArrayList<Point> leftPath;
-    ArrayList<Double> leftVelocity;
-    ArrayList<Double> leftAccel;
+    ArrayList<Double> leftVel;
+    ArrayList<Double> leftAcc;
 
     ArrayList<Point> rightPath;
-    ArrayList<Double> rightVelocity;
-    ArrayList<Double> rightAccel;
+    ArrayList<Double> rightVel;
+    ArrayList<Double> rightAcc;
 
     public Trajectory(ArrayList<Point> originalPath) {
-        this.originalPath = originalPath;
+        this.origPath = originalPath;
 
         injectedPath = new ArrayList<>();
         path = new ArrayList<>();
-        velocity = new ArrayList<>();
-        accel = new ArrayList<>();
+        vel = new ArrayList<>();
+        acc = new ArrayList<>();
 
         leftPath = new ArrayList<>();
-        leftVelocity = new ArrayList<>();
-        leftAccel = new ArrayList<>();
+        leftVel = new ArrayList<>();
+        leftAcc = new ArrayList<>();
 
         rightPath = new ArrayList<>();
-        rightVelocity = new ArrayList<>();
-        rightAccel = new ArrayList<>();
+        rightVel = new ArrayList<>();
+        rightAcc = new ArrayList<>();
         
     }
 
-    public Trajectory() { 
-        
-        originalPath = new ArrayList<>();
-        injectedPath = new ArrayList<>();
-        path = new ArrayList<>();
-        velocity = new ArrayList<>();
-        accel = new ArrayList<>();
-
-        leftPath = new ArrayList<>();
-        leftVelocity = new ArrayList<>();
-        leftAccel = new ArrayList<>();
-
-        rightPath = new ArrayList<>();
-        rightVelocity = new ArrayList<>();
-        rightAccel = new ArrayList<>();;
+    public Trajectory() {
+        origPath = new ArrayList<>();
 
         injectedPath = new ArrayList<>();
         path = new ArrayList<>();
-        velocity = new ArrayList<>();
-        accel = new ArrayList<>();
+        vel = new ArrayList<>();
+        acc = new ArrayList<>();
 
         leftPath = new ArrayList<>();
-        leftVelocity = new ArrayList<>();
-        leftAccel = new ArrayList<>();
+        leftVel = new ArrayList<>();
+        leftAcc = new ArrayList<>();
 
         rightPath = new ArrayList<>();
-        rightVelocity = new ArrayList<>();
-        rightAccel = new ArrayList<>();
+        rightVel = new ArrayList<>();
+        rightAcc = new ArrayList<>();;
     }
     
     public void setOriginalPath(ArrayList<Point> originalPath) {
-        this.originalPath = originalPath;
+        this.origPath = originalPath;
     }
 
     public void generateSplines() {
