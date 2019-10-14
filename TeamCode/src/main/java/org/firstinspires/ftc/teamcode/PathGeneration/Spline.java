@@ -85,6 +85,8 @@ public class Spline {
     }
 
 
+
+
     public Point solveAt(double t) {
         return new Point(xFunction.solve(t) , yFunction.solve(t), 0);
     }
