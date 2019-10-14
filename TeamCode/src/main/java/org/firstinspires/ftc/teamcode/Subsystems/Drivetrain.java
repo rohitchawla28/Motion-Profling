@@ -34,9 +34,18 @@ public class Drivetrain {
         fr.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.FLOAT);
         bl.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.FLOAT);
         br.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.FLOAT);
+
+        resetEncoders();
     }
 
     // ==================================  UTILITY  =============================================
+    public void setDrivePower(double power) {
+        fl.setPower(power);
+        fr.setPower(power);
+        bl.setPower(power);
+        br.setPower(power);
+    }
+
     public void setLeftPower(double power) {
         fr.setPower(power);
         br.setPower(power);
@@ -77,6 +86,28 @@ public class Drivetrain {
 
 
     // ==========================================  ENCODER  ========================================
+    public double getInches() {
+        int zeros = 0;
+
+        if (fl.getCurrentPosition() == 0) {
+            zeros++;
+        }
+        if (fr.getCurrentPosition() == 0) {
+            zeros++;
+        }
+        if (bl.getCurrentPosition() == 0) {
+            zeros++;
+        }
+        if (br.getCurrentPosition() == 0) {
+            zeros++;
+        }
+
+        return (fl.getCurrentPosition() +
+                fr.getCurrentPosition() +
+                bl.getCurrentPosition() +
+                br.getCurrentPosition()) / (4- zeros);
+    }
+
     public double getLeftInches() {
         int zeros = 0;
 
@@ -101,6 +132,15 @@ public class Drivetrain {
         }
 
         return ((fr.getCurrentPosition() / cpi) + (br.getCurrentPosition() / cpi)) / (2.0 - zeros);
+    }
+
+    // ========================================  TELEMETRY  ========================================
+    public double getVel(double prevInches, double inches, double prevTime, double time) {
+        return (inches - prevInches) / (time - prevTime);
+    }
+
+    public double getAcc(double prevVel, double vel, double prevTime, double time) {
+        return (vel - prevVel) / (time - prevTime);
     }
 
 }
