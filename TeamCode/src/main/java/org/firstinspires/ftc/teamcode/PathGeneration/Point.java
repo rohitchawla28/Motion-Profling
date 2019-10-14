@@ -5,6 +5,7 @@ public class Point {
     private double y;
     private double theta;
 
+    // TODO: change to pose? or pose and point separate?
     public Point(double xCoord, double yCoord, double theta) {
         this.x = xCoord;
         this.y = yCoord;

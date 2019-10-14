@@ -4,6 +4,15 @@ import java.util.ArrayList;
 
 public class Spline {
 
+    // start, end points
+    // start and end Vel. and Acc.
+    // ArrayLists for X/Y coeff of polynomial
+    // ArrayList for Parameterized polynomial
+    // get() and set()
+    // solve(t = )
+    // differentiate()
+    // generate() method that parameterizes X/Y
+
     private Polynomial xFunction;
     private Polynomial yFunction;
 
@@ -33,7 +42,7 @@ public class Spline {
         yFunction = new Polynomial();
     }
 
-    public void generateCubic() {
+    public void generateCubicSpline() {
         ArrayList<Double> xC = new ArrayList<>();
         ArrayList<Double> yC = new ArrayList<>();
 
@@ -57,6 +66,20 @@ public class Spline {
         yFunction.setCoefficients(yC);
     }
 
+    // TODO: call separate functions for x/y and make method to return arrayList?
+    public void generateQuinticSpline() {
+        ArrayList<Double> xCoefficients = new ArrayList<>();
+        ArrayList<Double> yCoefficients = new ArrayList<>();
+
+        xFunction.setStart(new Point(0, start.getX(), start.getTheta()));
+        xFunction.setEnd(new Point(1, end.getX(), end.getTheta()));
+        yFunction.setStart(new Point(0, start.getY(), start.getTheta()));
+        yFunction.setEnd(new Point(1, end.getY(), end.getTheta()));
+
+
+
+    }
+
     public String toString() {
         return "(" + xFunction.toString() + ", " + yFunction.toString() + ")" + "\n" + start + "\n" + end;
     }
@@ -78,12 +101,4 @@ public class Spline {
         return sum;
     }
 
-    // start, end points
-    // start and end Vel. and Acc.
-    // ArrayLists for X/Y coeff of polynomial
-    // ArrayList for Parameterized polynomial
-    // get() and set()
-    // solve(t = )
-    // differentiate()
-    // generate() method that parameterizes X/Y
 }

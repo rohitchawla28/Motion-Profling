@@ -13,9 +13,7 @@ public class Controller {
     private double kV;
     private double kA;
 
-    public double PDVA(Point currPoint, Point nextPoint, double dt, double prevSError, double goalVel, double goalAcc) {
-        double sError = MathFunctions.distance(currPoint, nextPoint);
-
+    public double PDVA(double prevSError, double sError, double dt, double goalVel, double goalAcc) {
         double p = sError * kP;
         double d = ((sError - prevSError) / (dt - goalVel)) * kD;
         double v = goalVel * kV;
