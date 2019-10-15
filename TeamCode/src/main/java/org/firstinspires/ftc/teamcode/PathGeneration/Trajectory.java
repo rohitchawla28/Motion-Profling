@@ -65,8 +65,24 @@ public class Trajectory {
     }
 
     public void generateSplines() {
+        for(int i = 0; i < origPath.size() - 1; i++) {
+            Point p1 = origPath.get(i);
+            Point p2 = origPath.get(i+1);
 
+            Spline s = new Spline(p1,p2);
+            s.generateCubicSpline();
+            path.add(s);
+        }
     }
+
+    public void injectPoints(double spacing) {
+    }
+
     
-    
+    public String toString() {
+        String t = "";
+        for (Spline s : path)
+            t += s + "\n";
+        return t;
+    }
 }

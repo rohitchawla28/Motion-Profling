@@ -84,8 +84,13 @@ public class Spline {
         return "(" + xFunction.toString() + ", " + yFunction.toString() + ")" + "\n" + start + "\n" + end;
     }
 
+    public Point getStart() {
+        return start;
+    }
 
-
+    public Point getEnd() {
+        return end;
+    }
 
     public Point solveAt(double t) {
         return new Point(xFunction.solve(t) , yFunction.solve(t), 0);
