@@ -20,6 +20,7 @@ public class TextRunner {
 
         Trajectory t = new Trajectory(points);
         t.generateSplines();
+        t.injectPoints1(0.05, 0.002);
         System.out.println(t);
 
 
