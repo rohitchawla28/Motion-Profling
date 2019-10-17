@@ -12,11 +12,11 @@ import java.util.ArrayList;
 public class TextRunner {
     public static void main(String[] args) throws IOException {
         ArrayList<Point> points = new ArrayList<>();
-        points.add(new Point(-5,3.0,10));
-        points.add(new Point(5,7,-10));
-        points.add(new Point(-1,.1,-20));
-        points.add(new Point(12,3.0,15));
-        points.add(new Point(15,20,1.0));
+        points.add(new Point(-1,12.5,15));
+        points.add(new Point(20,2,50));
+        points.add(new Point(-15,30,-20));
+        points.add(new Point(0,.5,50));
+        points.add(new Point(-16,.5,1.0));
 
         Trajectory t = new Trajectory(points);
         t.generateSplines();
