@@ -15,21 +15,23 @@ public class Trajectory {
     // store left/right velocities after modifying
     // store left/right accelerations after modifying
 
-    private ArrayList<Point> pointsPath;
-    private ArrayList<Point> injectedPath;
+    public ArrayList<Point> pointsPath;
+    public ArrayList<Point> injectedPath;
 
-    private ArrayList<Spline> splinesPath;
+    public ArrayList<Spline> splinesPath;
 
-    private ArrayList<Double> vel;
-    private ArrayList<Double> acc;
+    public ArrayList<Double> vel;
+    public ArrayList<Double> acc;
 
-    private ArrayList<Point> leftPath;
-    private ArrayList<Double> leftVel;
-    private ArrayList<Double> leftAcc;
+    public ArrayList<Point> leftPath;
+    public ArrayList<Double> leftVel;
+    public ArrayList<Double> leftAcc;
 
-    private ArrayList<Point> rightPath;
-    private ArrayList<Double> rightVel;
-    private ArrayList<Double> rightAcc;
+    public ArrayList<Point> rightPath;
+    public ArrayList<Double> rightVel;
+    public ArrayList<Double> rightAcc;
+
+    public double dt;
 
     public Trajectory(ArrayList<Point> originalPath) {
         this.pointsPath = originalPath;
@@ -53,6 +55,10 @@ public class Trajectory {
         this.pointsPath = originalPath;
     }
 
+    public void setDt(double dt) {
+        this.dt = dt;
+    }
+
     public void generateSplines() {
         for(int i = 0; i < pointsPath.size() - 1; i++) {
             Point p1 = pointsPath.get(i);
@@ -66,45 +72,45 @@ public class Trajectory {
 
     // inefficient
     // spacing in inches
-    public void injectPoints1(double spacing, double tolerance) {
-        HashMap<Double, Point> points = new HashMap<Double, Point>();
+    // TODO:
+    public void injectPoints(double spacing, double tolerance) {
+        HashMap<Double, Point> points = new HashMap<>();
 
         double t = 0;
         double tStep = 0.0001;
-        double distance;
+        double prevDistance = 0;
+        double currDistance;
+        double tempDistance;
+
         boolean correctSpacing;
 
         Point prevPoint = splinesPath.get(0).solveAt(0);
-        Point currPoint = splinesPath.get(0).solveAt(t + tStep);
+        Point tempPoint;
+        Point currPoint;
 
         for (Spline spline : splinesPath) {
-            while (!currPoint.equals(spline.getEnd())) {
+            while (t <= 1) {
                 currPoint = spline.solveAt(t + tStep);
-                distance = MathFunctions.distance(currPoint, prevPoint);
-                correctSpacing = MathFunctions.inRangeOf(distance, spacing, tolerance);
+                currDistance = MathFunctions.distance(currPoint, prevPoint);
+                correctSpacing = MathFunctions.inRangeOf(currDistance, spacing, tolerance);
                 while (!correctSpacing) {
-                    if (distance < (spacing - tolerance)) {
-                        tStep += 0.0001;
-                    } else {
-                        tStep -= 0.0001;
-                    }
+                    tStep += 0.0001;
+
+                    prevDistance += currDistance;
                     currPoint = spline.solveAt(t + tStep);
-                    distance = MathFunctions.distance(currPoint, prevPoint);
-                    correctSpacing = MathFunctions.inRangeOf(distance, spacing, tolerance);
+                    currDistance = MathFunctions.distance(currPoint, prevPoint);
+                    correctSpacing = MathFunctions.inRangeOf(currDistance + prevDistance, spacing, tolerance);
                 }
                 points.put(t + tStep, currPoint);
 
                 prevPoint = currPoint;
                 t += tStep;
                 tStep = 0.0001;
+                prevDistance = 0;
             }
+            t = 0;
         }
         injectedPath = UtilFunctions.hashMapToArrayList(points);
-
-    }
-
-    // recursive
-    public void injectPoints2(double spacing) {
 
     }
     

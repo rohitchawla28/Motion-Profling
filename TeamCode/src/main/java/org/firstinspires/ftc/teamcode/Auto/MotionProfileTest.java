@@ -38,6 +38,6 @@ public class MotionProfileTest extends LinearOpMode {
 
         double dt = 0.05;
 
-        follower.followTrajectory(leftPath, rightPath, leftVel, leftAcc, rightVel, rightAcc, dt);
+        follower.followTrajectory();
     }
 }
