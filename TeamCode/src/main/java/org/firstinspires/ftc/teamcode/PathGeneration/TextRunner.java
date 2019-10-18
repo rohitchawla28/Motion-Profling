@@ -12,21 +12,14 @@ import java.util.ArrayList;
 public class TextRunner {
     public static void main(String[] args) throws IOException {
         ArrayList<Point> points = new ArrayList<>();
-        points.add(new Point(-1,12.5,15));
-        points.add(new Point(20,2,50));
-        points.add(new Point(-15,30,-20));
-        points.add(new Point(0,.5,50));
-        points.add(new Point(-16,.5,1.0));
+        points.add(new Point(50,5,15));
+        points.add(new Point(-11,10,50));
 
         Trajectory t = new Trajectory(points);
         t.generateSplines();
-        //t.injectPoints(0.05, 0.01);
-        System.out.println(t);
-
-
-        /* PrintWriter printWriter = new PrintWriter(new File("spline.txt"));
-        printWriter.print(s.toString());
-        printWriter.close(); */
+        System.out.println(t.equationToString());
+        t.injectPoints(6, 0.1);
+        System.out.println(t.injectedPointsToString());
 
     }
 }

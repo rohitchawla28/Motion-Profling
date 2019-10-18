@@ -8,14 +8,12 @@ public class CSVFunctions {
 
     }
 
-    // TODO: parameters for CSV columns
-    // TODO: combine methods and have parameter for type?
-    public ArrayList<Point> getCSVPath() {
-        return new ArrayList<>();
+    public void addPointCSV(PointAllData data) {
+
     }
 
-    public ArrayList<Double> getCSVValues() {
-        return new ArrayList<>();
-    }
+//    public PointAllData getCSVValues() {
+//        return new PointAllData();
+//    }
 
 }

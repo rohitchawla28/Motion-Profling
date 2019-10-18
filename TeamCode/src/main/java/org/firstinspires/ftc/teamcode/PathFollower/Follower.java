@@ -19,8 +19,9 @@ public class Follower {
 
     // iterate through points to follow velocities
     // assuming equal dt steps
+    // TODO: change to CSV pulling
+    // TODO: prev/curr time object for dt
     public void followTrajectory() throws InterruptedException{
-
         Drivetrain drivetrain = new Drivetrain(opMode);
 
         double leftSError;

@@ -30,17 +30,13 @@ public class Point {
         return theta;
     }
 
-    public void setTheta(double theta) {
-        this.theta = theta;
-    }
-
     public boolean equals(Object point) {
         Point other = (Point) point;
         return this.x == other.x && this.y == other.y && this.theta == other.theta;
     }
 
     public String toString() {
-        return "(" + x + "," + y + ")";
+        return "(" + x + ", " + y + ")";
     }
 
 }

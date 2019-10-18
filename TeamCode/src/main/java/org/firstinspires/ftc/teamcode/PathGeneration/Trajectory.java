@@ -70,16 +70,12 @@ public class Trajectory {
         }
     }
 
-    // inefficient
+    // TODO: add automatic scaling for tStep/tolerance for spacing
     // spacing in inches
-    // TODO:
     public void injectPoints(double spacing, double tolerance) {
-        HashMap<Double, Point> points = new HashMap<>();
-
         double t = 0;
-        double tStep = 0.0001;
-        double prevDistance = 0;
-        double currDistance;
+        double tStep = 0.01;
+        double storedArcDistance = 0;
         double tempDistance;
 
         boolean correctSpacing;
@@ -89,35 +85,51 @@ public class Trajectory {
         Point currPoint;
 
         for (Spline spline : splinesPath) {
+            injectedPath.add(spline.getStart());
             while (t <= 1) {
                 currPoint = spline.solveAt(t + tStep);
-                currDistance = MathFunctions.distance(currPoint, prevPoint);
-                correctSpacing = MathFunctions.inRangeOf(currDistance, spacing, tolerance);
+                tempDistance = MathFunctions.distance(currPoint, prevPoint);
+                correctSpacing = MathFunctions.inRangeOf(tempDistance, spacing, tolerance);
+                storedArcDistance += tempDistance;
                 while (!correctSpacing) {
                     tStep += 0.0001;
 
-                    prevDistance += currDistance;
                     currPoint = spline.solveAt(t + tStep);
-                    currDistance = MathFunctions.distance(currPoint, prevPoint);
-                    correctSpacing = MathFunctions.inRangeOf(currDistance + prevDistance, spacing, tolerance);
+                    tempDistance = MathFunctions.distance(currPoint, prevPoint);
+                    storedArcDistance += tempDistance;
+
+                    correctSpacing = MathFunctions.inRangeOf(storedArcDistance, spacing, tolerance);
+                    prevPoint = currPoint;
                 }
-                points.put(t + tStep, currPoint);
+                if (t + tStep <= 1) {
+                    injectedPath.add(currPoint);
+                }
 
                 prevPoint = currPoint;
                 t += tStep;
-                tStep = 0.0001;
-                prevDistance = 0;
+                tStep = 0.01;
+                storedArcDistance = 0;
             }
             t = 0;
+
+            injectedPath.add(spline.getEnd());
         }
-        injectedPath = UtilFunctions.hashMapToArrayList(points);
 
     }
     
-    public String toString() {
-        String t = "";
-        for (Spline spline : splinesPath)
-            t += spline + "\n";
-        return t;
+    public String equationToString() {
+        String equation = "";
+        for (Spline spline : splinesPath) {
+            equation += spline + "\n";
+        }
+        return equation;
+    }
+
+    public String injectedPointsToString() {
+        String points = "";
+        for (Point point : injectedPath) {
+            points += point + "\n";
+        }
+        return points;
     }
 }
