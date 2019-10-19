@@ -74,14 +74,13 @@ public class Trajectory {
     // spacing in inches
     public void injectPoints(double spacing, double tolerance) {
         double t = 0;
-        double tStep = 0.01;
+        double tStep = 0.001;
         double storedArcDistance = 0;
         double tempDistance;
 
         boolean correctSpacing;
 
         Point prevPoint = splinesPath.get(0).solveAt(0);
-        Point tempPoint;
         Point currPoint;
 
         // TODO: if goes over spacing, have a problem of infinite loop
@@ -92,6 +91,8 @@ public class Trajectory {
                 tempDistance = MathFunctions.distance(currPoint, prevPoint);
                 correctSpacing = MathFunctions.inRangeOf(tempDistance, spacing, tolerance);
                 storedArcDistance += tempDistance;
+
+                prevPoint = currPoint;
                 while (!correctSpacing) {
                     tStep += 0.001;
 
@@ -108,7 +109,7 @@ public class Trajectory {
 
                 prevPoint = currPoint;
                 t += tStep;
-                tStep = 0.01;
+                tStep = 0.001;
                 storedArcDistance = 0;
             }
             t = 0;
