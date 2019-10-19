@@ -33,6 +33,7 @@ public class Sensors {
 
     }
 
+    // TODO: change to 0 - 360
     public double getGyroYaw() {
         updateGyroValues();
         return angles.firstAngle;

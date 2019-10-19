@@ -84,6 +84,7 @@ public class Trajectory {
         Point tempPoint;
         Point currPoint;
 
+        // TODO: if goes over spacing, have a problem of infinite loop
         for (Spline spline : splinesPath) {
             injectedPath.add(spline.getStart());
             while (t <= 1) {
@@ -92,7 +93,7 @@ public class Trajectory {
                 correctSpacing = MathFunctions.inRangeOf(tempDistance, spacing, tolerance);
                 storedArcDistance += tempDistance;
                 while (!correctSpacing) {
-                    tStep += 0.0001;
+                    tStep += 0.001;
 
                     currPoint = spline.solveAt(t + tStep);
                     tempDistance = MathFunctions.distance(currPoint, prevPoint);

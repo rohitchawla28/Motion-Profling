@@ -4,4 +4,7 @@ public class Constants {
     // max vel/accel constants
     public final double kMV = 0;
     public final double kMA = 0;
+
+    // track width inches
+    public final double kWidth = 17;
 }

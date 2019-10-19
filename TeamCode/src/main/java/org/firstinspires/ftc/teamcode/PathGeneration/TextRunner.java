@@ -14,6 +14,8 @@ public class TextRunner {
         ArrayList<Point> points = new ArrayList<>();
         points.add(new Point(50,5,15));
         points.add(new Point(-11,10,50));
+        points.add(new Point(10, -40, 30));
+        points.add(new Point(-30, 15, -20));
 
         Trajectory t = new Trajectory(points);
         t.generateSplines();
