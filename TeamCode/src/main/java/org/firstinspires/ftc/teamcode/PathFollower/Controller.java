@@ -1,8 +1,6 @@
 package org.firstinspires.ftc.teamcode.PathFollower;
 
-import org.firstinspires.ftc.teamcode.PathGeneration.Point;
 import org.firstinspires.ftc.teamcode.Subsystems.Drivetrain;
-import org.firstinspires.ftc.teamcode.Util.MathFunctions;
 
 public class Controller {
     private Drivetrain drivetrain;

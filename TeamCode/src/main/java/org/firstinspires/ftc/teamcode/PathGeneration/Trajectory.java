@@ -1,10 +1,10 @@
 package org.firstinspires.ftc.teamcode.PathGeneration;
 
 import org.firstinspires.ftc.teamcode.Util.MathFunctions;
-import org.firstinspires.ftc.teamcode.Util.UtilFunctions;
+import org.firstinspires.ftc.teamcode.Util.Point;
+import org.firstinspires.ftc.teamcode.Util.Vector;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 
 public class Trajectory {
     // store original points
@@ -133,5 +133,52 @@ public class Trajectory {
             points += point + "\n";
         }
         return points;
+    }
+
+    public Point getLeftPos(double x, double y, double yaw, double width) {
+        if (yaw == 0) {
+            return new Point(x, y + (width / 2));
+        }
+        else if (yaw == Math.PI) {
+            return new Point(x, y - (width / 2));
+        }
+        else if (yaw == (Math.PI / 2)) {
+            return new Point(x - (width / 2), y);
+        }
+        else if (yaw == ((3 * Math.PI) / 2)) {
+            return new Point(x + (width / 2), y);
+        }
+
+        double theta = Math.atan(yaw);
+        double perpendicular = -1 * (1 / theta);
+        double perpYInt = MathFunctions.yIntercept(perpendicular, new Point(x, y));
+
+        Vector vector = new Vector(x, y, x + 1, MathFunctions.solveLinear(perpendicular, x + 1, perpYInt));
+
+        return new Point(x + ((width / 2) * vector.getUnitV1()), y + ((width / 2) * vector.getUnitV2()));
+
+    }
+
+    public Point getRightPos(double x, double y, double yaw, double width) {
+        if (yaw == 0) {
+            return new Point(x, y - (width / 2));
+        }
+        else if (yaw == Math.PI) {
+            return new Point(x, y + (width / 2));
+        }
+        else if (yaw == (Math.PI / 2)) {
+            return new Point(x + (width / 2), y);
+        }
+        else if (yaw == ((3 * Math.PI) / 2)) {
+            return new Point(x - (width / 2), y);
+        }
+
+        double theta = Math.atan(yaw);
+        double perpendicular = -1 * (1 / theta);
+        double perpYInt = MathFunctions.yIntercept(perpendicular, new Point(x, y));
+
+        Vector vector = new Vector(x, y, x + 1, MathFunctions.solveLinear(perpendicular, x + 1, perpYInt));
+
+        return new Point(x - ((width / 2) * vector.getUnitV1()), y - ((width / 2) * vector.getUnitV2()));
     }
 }

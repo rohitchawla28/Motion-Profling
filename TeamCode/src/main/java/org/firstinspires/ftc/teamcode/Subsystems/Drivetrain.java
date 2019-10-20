@@ -3,8 +3,10 @@ package org.firstinspires.ftc.teamcode.Subsystems;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.DcMotor;
 
-import org.firstinspires.ftc.teamcode.PathGeneration.Point;
+import org.firstinspires.ftc.teamcode.Util.Point;
 import org.firstinspires.ftc.teamcode.Util.Constants;
+import org.firstinspires.ftc.teamcode.Util.MathFunctions;
+import org.firstinspires.ftc.teamcode.Util.Vector;
 
 public class Drivetrain {
 
@@ -175,17 +177,50 @@ public class Drivetrain {
     }
 
     public Point getLeftPos() {
+        if (sensors.getGyroYaw() == 0) {
+            return new Point(getX(), getY() + (constants.kWidth / 2));
+        }
+        else if (sensors.getGyroYaw() == Math.PI) {
+            return new Point(getX(), getY() - (constants.kWidth / 2));
+        }
+        else if (sensors.getGyroYaw() == (Math.PI / 2)) {
+            return new Point(getX() - (constants.kWidth / 2), getY());
+        }
+        else if (sensors.getGyroYaw() == ((3 * Math.PI) / 2)) {
+            return new Point(getX() + (constants.kWidth / 2), getY());
+        }
+
         double theta = Math.atan(sensors.getGyroYaw());
         double perpendicular = -1 * (1 / theta);
+        double perpYInt = MathFunctions.yIntercept(perpendicular, new Point(getX(), getY()));
 
-        return new Point();
+        Vector vector = new Vector(getX(), getY(), getX() + 1, MathFunctions.solveLinear(perpendicular, getX() + 1, perpYInt));
+
+        return new Point(getX() + ((constants.kWidth / 2) * vector.getUnitV1()), getY() + ((constants.kWidth / 2) * vector.getUnitV2()));
+
     }
 
     public Point getRightPos() {
+        if (sensors.getGyroYaw() == 0) {
+            return new Point(getX(), getY() - (constants.kWidth / 2));
+        }
+        else if (sensors.getGyroYaw() == Math.PI) {
+            return new Point(getX(), getY() + (constants.kWidth / 2));
+        }
+        else if (sensors.getGyroYaw() == (Math.PI / 2)) {
+            return new Point(getX() + (constants.kWidth / 2), getY());
+        }
+        else if (sensors.getGyroYaw() == ((3 * Math.PI) / 2)) {
+            return new Point(getX() - (constants.kWidth / 2), getY());
+        }
+
         double theta = Math.atan(sensors.getGyroYaw());
         double perpendicular = -1 * (1 / theta);
+        double perpYInt = MathFunctions.yIntercept(perpendicular, new Point(getX(), getY()));
 
-        return new Point();
+        Vector vector = new Vector(getX(), getY(), getX() + 1, MathFunctions.solveLinear(perpendicular, getX() + 1, perpYInt));
+
+        return new Point(getX() - ((constants.kWidth / 2) * vector.getUnitV1()), getY() - ((constants.kWidth / 2) * vector.getUnitV2()));
     }
 
     // ========================================  TELEMETRY  ========================================

@@ -3,12 +3,10 @@ package org.firstinspires.ftc.teamcode.PathFollower;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
-import org.firstinspires.ftc.teamcode.PathGeneration.Point;
+import org.firstinspires.ftc.teamcode.Util.Point;
 import org.firstinspires.ftc.teamcode.PathGeneration.Trajectory;
 import org.firstinspires.ftc.teamcode.Subsystems.Drivetrain;
 import org.firstinspires.ftc.teamcode.Util.MathFunctions;
-
-import java.util.ArrayList;
 
 public class Follower {
 

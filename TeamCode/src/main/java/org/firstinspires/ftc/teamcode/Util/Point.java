@@ -1,11 +1,11 @@
-package org.firstinspires.ftc.teamcode.PathGeneration;
+package org.firstinspires.ftc.teamcode.Util;
 
 public class Point {
     private double x;
     private double y;
     private double theta;
 
-    // TODO: change to pose? or pose and point separate?
+    // TODO: change to heading instead of theta and do inverse tan?
     public Point(double x, double y, double theta) {
         this.x = x;
         this.y = y;

@@ -4,11 +4,8 @@ import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 
 import org.firstinspires.ftc.teamcode.PathFollower.Follower;
-import org.firstinspires.ftc.teamcode.PathGeneration.Point;
 import org.firstinspires.ftc.teamcode.PathGeneration.CSVFunctions;
 import org.firstinspires.ftc.teamcode.Subsystems.Drivetrain;
-
-import java.util.ArrayList;
 
 @Autonomous (name = "Test", group = "Auto")
 public class MotionProfileTest extends LinearOpMode {
