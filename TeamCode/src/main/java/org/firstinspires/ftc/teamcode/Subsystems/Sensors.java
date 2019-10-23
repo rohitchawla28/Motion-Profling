@@ -33,7 +33,7 @@ public class Sensors {
 
     }
 
-    // TODO: gyro testing
+    // TODO: gyro testing for first angle, etc
     // convert to 0-360
     public double getGyroYaw() {
         updateGyroValues();

@@ -25,9 +25,8 @@ public class TextRunner {
 //        t.injectPoints(2, 1);
 //        System.out.println(t.injectedPointsToString());
 
-        Trajectory t = new Trajectory(points);
-        System.out.println(t.getLeftPos(1, 4, Math.PI / 6, 18));
-        System.out.println(t.getRightPos(1, 4, Math.PI / 6, 18));
+        System.out.println(TestMethods.getLeftPos(1, 4, Math.PI / 4, 18));
+        System.out.println(TestMethods.getRightPos(1, 4, Math.PI / 4, 18));
 
     }
 

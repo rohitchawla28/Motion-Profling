@@ -177,27 +177,25 @@ public class Drivetrain {
     }
 
     public Point getLeftPos() {
-        if (sensors.getGyroYaw() == 0) {
-            return new Point(getX(), getY() + (constants.kWidth / 2));
-        }
-        else if (sensors.getGyroYaw() == Math.PI) {
-            return new Point(getX(), getY() - (constants.kWidth / 2));
-        }
-        else if (sensors.getGyroYaw() == (Math.PI / 2)) {
-            return new Point(getX() - (constants.kWidth / 2), getY());
-        }
-        else if (sensors.getGyroYaw() == ((3 * Math.PI) / 2)) {
-            return new Point(getX() + (constants.kWidth / 2), getY());
-        }
+        if (sensors.getGyroYaw() == 0) return new Point(getX(), getY() + (constants.kWidth / 2));
+        else if (sensors.getGyroYaw() == Math.PI) return new Point(getX(), getY() - (constants.kWidth / 2));
+        else if (sensors.getGyroYaw() == (Math.PI / 2)) return new Point(getX() - (constants.kWidth / 2), getY());
+        else if (sensors.getGyroYaw() == ((3 * Math.PI) / 2)) return new Point(getX() + (constants.kWidth / 2), getY());
 
-        double theta = Math.atan(sensors.getGyroYaw());
+        double theta = Math.tan(sensors.getGyroYaw());
+
         double perpendicular = -1 * (1 / theta);
         double perpYInt = MathFunctions.yIntercept(perpendicular, new Point(getX(), getY()));
 
         Vector vector = new Vector(getX(), getY(), getX() + 1, MathFunctions.solveLinear(perpendicular, getX() + 1, perpYInt));
 
-        return new Point(getX() + ((constants.kWidth / 2) * vector.getUnitV1()), getY() + ((constants.kWidth / 2) * vector.getUnitV2()));
-
+        if (sensors.getGyroYaw() < Math.PI / 2 || sensors.getGyroYaw() > (3 * Math.PI) / 2) {
+            return new Point(getX() - ((constants.kWidth / 2) * vector.getUnitV1()), getY() - ((constants.kWidth / 2) * vector.getUnitV2()));
+        }
+        else {
+            System.out.println("Different left trans");
+            return new Point(getX() + ((constants.kWidth / 2) * vector.getUnitV1()), getY() + ((constants.kWidth / 2) * vector.getUnitV2()));
+        }
     }
 
     public Point getRightPos() {
@@ -214,13 +212,19 @@ public class Drivetrain {
             return new Point(getX() - (constants.kWidth / 2), getY());
         }
 
-        double theta = Math.atan(sensors.getGyroYaw());
+        double theta = Math.tan(sensors.getGyroYaw());
+
         double perpendicular = -1 * (1 / theta);
         double perpYInt = MathFunctions.yIntercept(perpendicular, new Point(getX(), getY()));
 
         Vector vector = new Vector(getX(), getY(), getX() + 1, MathFunctions.solveLinear(perpendicular, getX() + 1, perpYInt));
 
-        return new Point(getX() - ((constants.kWidth / 2) * vector.getUnitV1()), getY() - ((constants.kWidth / 2) * vector.getUnitV2()));
+        if (sensors.getGyroYaw() < Math.PI / 2 || sensors.getGyroYaw() > (3 * Math.PI) / 2) {
+            return new Point(getX() + ((constants.kWidth / 2) * vector.getUnitV1()), getY() + ((constants.kWidth / 2) * vector.getUnitV2()));
+        }
+        else {
+            return new Point(getX() - ((constants.kWidth / 2) * vector.getUnitV1()), getY() - ((constants.kWidth / 2) * vector.getUnitV2()));
+        }
     }
 
     // ========================================  TELEMETRY  ========================================
