@@ -14,19 +14,19 @@ public class TextRunner {
 
     public static void main(String[] args) throws IOException {
         ArrayList<Point> points = new ArrayList<>();
-//        points.add(new Point(50,5,-34));
-//        points.add(new Point(-11,10,50));
-//        points.add(new Point(10, -40, 10));
-//        points.add(new Point(-30, 15, -20));
-//
-//        Trajectory t = new Trajectory(points);
-//        t.generateSplines();
-//        System.out.println(t.equationToString());
-//        t.injectPoints(2, 1);
-//        System.out.println(t.injectedPointsToString());
+        points.add(new Point(1,1, 43));
+        points.add(new Point(85, 20, 962));
+        points.add(new Point(-16, 78, 32));
+        points.add(new Point(52, 7, 52));
 
-        System.out.println(TestMethods.getLeftPos(1, 4, Math.PI / 4, 18));
-        System.out.println(TestMethods.getRightPos(1, 4, Math.PI / 4, 18));
+        Trajectory t = new Trajectory(points);
+        t.generateSplines();
+        System.out.println(t.equationToString());
+        t.injectPoints(2, 1);
+        System.out.println(t.injectedPointsToString());
+
+//        System.out.println(TestMethods.getLeftPos(1, 4, Math.PI / 4, 18));
+//        System.out.println(TestMethods.getRightPos(1, 4, Math.PI / 4, 18));
 
     }
 
