@@ -6,5 +6,5 @@ public class Constants {
     public final double kMA = 0;
 
     // track width inches
-    public final double kWidth = 17;
+    public static final double kWidth = 17;
 }

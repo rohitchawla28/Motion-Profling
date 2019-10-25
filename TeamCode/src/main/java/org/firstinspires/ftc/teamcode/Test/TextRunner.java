@@ -1,10 +1,7 @@
 package org.firstinspires.ftc.teamcode.Test;
 
-import org.firstinspires.ftc.teamcode.PathGeneration.Trajectory;
 import org.firstinspires.ftc.teamcode.Subsystems.Drivetrain;
-import org.firstinspires.ftc.teamcode.Util.MathFunctions;
 import org.firstinspires.ftc.teamcode.Util.Point;
-import org.firstinspires.ftc.teamcode.Util.Vector;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -19,11 +16,14 @@ public class TextRunner {
         points.add(new Point(-16, 78, 32));
         points.add(new Point(52, 7, 52));
 
-        Trajectory t = new Trajectory(points);
+        /*Trajectory t = new Trajectory(points);
         t.generateSplines();
         System.out.println(t.equationToString());
         t.injectPoints(2, 1);
         System.out.println(t.injectedPointsToString());
+        */
+        System.out.println(TestMethods.getLeftPos(1,1,Math.PI/4, 0));
+        System.out.println(TestMethods.getRightPos(1,1,Math.PI/4, 0));
 
 //        System.out.println(TestMethods.getLeftPos(1, 4, Math.PI / 4, 18));
 //        System.out.println(TestMethods.getRightPos(1, 4, Math.PI / 4, 18));
