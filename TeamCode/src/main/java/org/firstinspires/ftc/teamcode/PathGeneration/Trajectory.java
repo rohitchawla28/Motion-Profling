@@ -64,6 +64,8 @@ public class Trajectory {
         }
     }
 
+
+
     // inefficient
     // spacing in inches
     public void injectPoints1(double spacing, double tolerance) {
