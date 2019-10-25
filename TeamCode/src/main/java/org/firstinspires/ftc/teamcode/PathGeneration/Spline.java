@@ -1,5 +1,7 @@
 package org.firstinspires.ftc.teamcode.PathGeneration;
 
+import org.firstinspires.ftc.teamcode.Util.Point;
+
 import java.util.ArrayList;
 
 public class Spline {
@@ -19,24 +21,9 @@ public class Spline {
     private Point start;
     private Point end;
 
-    private double sAccel;
-    private double eAccel;
-
-    public Spline(Point start, Point end, double sAccel, double eAccel) {
-        this.start = start;
-        this.end = end;
-        this.sAccel = sAccel;
-        this.eAccel = eAccel;
-        xFunction = new Polynomial();
-        yFunction = new Polynomial();
-    }
-
     public Spline(Point start, Point end) {
         this.start = start;
         this.end = end;
-
-        sAccel = 0.0;
-        eAccel = 0.0;
 
         xFunction = new Polynomial();
         yFunction = new Polynomial();
@@ -66,7 +53,6 @@ public class Spline {
         yFunction.setCoefficients(yC);
     }
 
-    // TODO: call separate functions for x/y and make method to return arrayList?
     public void generateQuinticSpline() {
         ArrayList<Double> xCoefficients = new ArrayList<>();
         ArrayList<Double> yCoefficients = new ArrayList<>();
@@ -75,8 +61,6 @@ public class Spline {
         xFunction.setEnd(new Point(1, end.getX(), end.getTheta()));
         yFunction.setStart(new Point(0, start.getY(), start.getTheta()));
         yFunction.setEnd(new Point(1, end.getY(), end.getTheta()));
-
-
 
     }
 

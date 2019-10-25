@@ -1,7 +1,5 @@
 package org.firstinspires.ftc.teamcode.Util;
 
-import org.firstinspires.ftc.teamcode.PathGeneration.Point;
-
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;

@@ -1,5 +1,7 @@
 package org.firstinspires.ftc.teamcode.PathGeneration;
 
+import org.firstinspires.ftc.teamcode.Util.Point;
+
 import java.util.ArrayList;
 
 public class Polynomial {

@@ -33,10 +33,11 @@ public class Sensors {
 
     }
 
+    // TODO: gyro testing for first angle, etc
+    // convert to 0-360
     public double getGyroYaw() {
         updateGyroValues();
-        return angles.firstAngle;
-
+        return angles.firstAngle * (Math.PI / 180);
     }
 
     public double getGyroPitch() {
