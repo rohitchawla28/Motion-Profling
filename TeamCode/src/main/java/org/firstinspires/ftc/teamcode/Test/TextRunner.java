@@ -15,7 +15,7 @@ public class TextRunner {
     public static void main(String[] args) throws IOException {
         ArrayList<Point> points = new ArrayList<>();
         points.add(new Point(1,1, 43));
-        points.add(new Point(85, 20, 962));
+        points.add(new Point(85, 20, -20));
         points.add(new Point(-16, 78, 32));
         points.add(new Point(52, 7, 52));
 
