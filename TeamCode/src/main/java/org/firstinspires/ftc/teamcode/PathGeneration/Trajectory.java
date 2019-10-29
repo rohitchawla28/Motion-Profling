@@ -2,7 +2,6 @@ package org.firstinspires.ftc.teamcode.PathGeneration;
 
 import org.firstinspires.ftc.teamcode.Util.MathFunctions;
 import org.firstinspires.ftc.teamcode.Util.Point;
-import org.firstinspires.ftc.teamcode.Util.Vector;
 
 import java.util.ArrayList;
 
@@ -69,6 +68,11 @@ public class Trajectory {
             splinesPath.add(spline);
         }
     }
+
+
+
+
+    // inefficient
 
     // TODO: add automatic scaling for tStep/tolerance for spacing
     // spacing in inches
