@@ -1,4 +1,4 @@
-Testing project for Motion Profling - Team 6800 FRC Competition
+Testing project for Motion Profling - Rohit Chawla and Gabe Diaz
 
 Package Functions
   - Auto: Autonomous modes
